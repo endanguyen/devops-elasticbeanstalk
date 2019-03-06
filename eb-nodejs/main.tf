@@ -23,7 +23,7 @@ resource "aws_elastic_beanstalk_application" "default" {
 resource "aws_elastic_beanstalk_environment" "default" {
   name                = "${var.aws_elastic_beanstalk_environment_name}"
   application         = "${aws_elastic_beanstalk_application.default.name}"
-  solution_stack_name = "64bit Amazon Linux 2018.03 v2.7.0 running PHP 7.1"
+  solution_stack_name = "64bit Amazon Linux 2018.03 v4.8.1 running Node.js"
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name = "InstanceType"
@@ -60,9 +60,14 @@ resource "aws_elastic_beanstalk_environment" "default" {
     value = "application"
   }
   setting {
-    namespace = "aws:elasticbeanstalk:container:php:phpini"
-    name = "document_root"
-    value = "/public"
+    namespace = "aws:elasticbeanstalk:container:nodejs"
+    name = "NodeVersion"
+    value = "${var.nodejs_version}"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:container:nodejs"
+    name = "NodeCommand"
+    value = "${var.nodejs_command}"
   }
   ###===================== Application ENV vars ======================###
   setting {

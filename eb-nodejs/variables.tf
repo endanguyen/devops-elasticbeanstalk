@@ -8,10 +8,9 @@ variable "aws_region" {
   default     = "eu-west-2"
 }
 
-# 
 variable "aws_profile" {
   description = "AWS profile name in .aws/config."
-  default     = "eb-cli"
+  default     = "eb-cli2"
 }
 
 # ubuntu-trusty-14.04 (x64)
@@ -37,8 +36,19 @@ variable "aws_elastic_beanstalk_environment_name" {
   default = "test-app-name"
 }
 
+#instance type of eb
 variable "instance_type" {
   default = "t2.micro"
+}
+
+# Nodejs version https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platform-history-nodejs.html
+variable "nodejs_version" {
+  default = "8.15.0"
+}
+
+#Nodejs command with start application
+variable "nodejs_command" {
+  default = "npm run prod"
 }
 
 #Identifier for your DB url of database (Member must contain only letters, digits, and the dash character and may not start or end with a dash)
@@ -90,6 +100,7 @@ variable "env_vars" {
   description = "Map of custom ENV variables to be provided to the application running on Elastic Beanstalk."
 
   default = {
+    APP_PORT = "8081"
     DB_CONNECTION = "mysql"
     SECURE = "false"
     AWS_KEY = "Replace aws key here"
