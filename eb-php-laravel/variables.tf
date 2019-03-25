@@ -11,7 +11,7 @@ variable "aws_region" {
 # 
 variable "aws_profile" {
   description = "AWS profile name in .aws/config."
-  default     = "eb-cli"
+  default = "eb-cli2"
 }
 
 # ubuntu-trusty-14.04 (x64)

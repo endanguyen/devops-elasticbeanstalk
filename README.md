@@ -13,9 +13,9 @@ $terraform apply
 
 ### - Nodejs 
 go to eb-nodejs then edit in variables.tf with your variable.
-
 ```
 $cd eb-nodejs
 $terraform init
 $terraform apply
 ```
+- Do not edit main and outputs
